@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Panoh — Ayollar Xavfsizligi Platformasi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-bright": "#fbf9f8",
+          "surface-container-highest": "#e2e2e1",
+          "on-primary-container": "#1a2173",
+          "primary-dim": "#444b9c",
+          "primary-fixed": "#9da4fc",
+          "on-secondary-fixed-variant": "#1a6566",
+          "inverse-on-surface": "#9d9d9c",
+          "outline": "#7a7b7a",
+          "error-container": "#f97386",
+          "on-surface": "#313332",
+          "on-primary-fixed": "#00014b",
+          "on-tertiary-fixed-variant": "#65596e",
+          "on-secondary": "#e0fffe",
+          "tertiary": "#675a70",
+          "secondary-container": "#aaefee",
+          "tertiary-fixed-dim": "#e2d1eb",
+          "on-tertiary-fixed": "#483d51",
+          "surface-dim": "#dadad9",
+          "surface-container-lowest": "#ffffff",
+          "secondary-fixed-dim": "#9ce0e0",
+          "outline-variant": "#b1b2b1",
+          "on-secondary-fixed": "#004748",
+          "on-surface-variant": "#5e5f5f",
+          "secondary-dim": "#0a5d5d",
+          "surface-container": "#eeeeed",
+          "surface": "#fbf9f8",
+          "on-primary-fixed-variant": "#242b7c",
+          "on-error-container": "#6e0523",
+          "error-dim": "#6b0221",
+          "tertiary-container": "#f1dffa",
+          "inverse-primary": "#9da4fc",
+          "tertiary-dim": "#5b4e64",
+          "tertiary-fixed": "#f1dffa",
+          "primary-container": "#9da4fc",
+          "secondary-fixed": "#aaefee",
+          "on-primary": "#fbf8ff",
+          "primary-fixed-dim": "#9097ed",
+          "on-secondary-container": "#065b5c",
+          "on-error": "#fff7f7",
+          "primary": "#5057a9",
+          "on-tertiary": "#fff6fe",
+          "on-background": "#313332",
+          "secondary": "#1f6969",
+          "inverse-surface": "#0d0e0e",
+          "surface-container-low": "#f5f3f2",
+          "surface-variant": "#e2e2e1",
+          "on-tertiary-container": "#5b4f64",
+          "error": "#a8364b",
+          "surface-tint": "#5057a9",
+          "surface-container-high": "#e8e8e7",
+          "background": "#fbf9f8"
+        },
+        fontFamily: {
+          "headline": ["Public Sans"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        },
+        borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+      },
+    },
+  }
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #fbf9f8; color: #313332; }
+  h1, h2, h3, h4, .headline { font-family: 'Public Sans', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block; line-height: 1; vertical-align: middle;
+  }
+  .ms-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .glass-effect { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .ethereal-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .page { display: none; }
+  .page.active { display: block; }
+  .nav-pill { transition: all 0.2s; }
+  .nav-pill:hover { background: #f5f3f2; }
+  .quick-exit-btn { transition: transform 0.15s; }
+  .quick-exit-btn:hover { transform: scale(1.05); }
+  .quick-exit-btn:active { transform: scale(0.92); }
+  .card-hover { transition: all 0.2s; cursor: pointer; }
+  .card-hover:hover { transform: translateY(-1px); }
+  .record-btn:active { transform: scale(0.88); }
+  .tab-btn { transition: all 0.15s; }
+  .custom-scroll::-webkit-scrollbar { width: 4px; }
+  .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+  .custom-scroll::-webkit-scrollbar-thumb { background: #e2e2e1; border-radius: 10px; }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+  @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fade-in 0.35s ease forwards; }
+  .lang-btn.active { background: #5057a9; color: #fbf8ff; }
+</style>
+</head>
+<body class="min-h-screen pb-24">
+
+<!-- ═══════════════════════════════════════════════════
+     GLOBAL: QUICK EXIT BUTTON (on every screen)
+═══════════════════════════════════════════════════ -->
+<a href="https://google.com" id="quick-exit"
+  class="quick-exit-btn fixed bottom-24 right-6 z-[90] flex items-center gap-2 bg-error text-on-error px-5 py-3.5 rounded-full shadow-2xl ring-4 ring-white/40">
+  <span class="material-symbols-outlined ms-fill text-[18px]">logout</span>
+  <span class="font-label font-bold text-xs tracking-widest uppercase">Tezkor Chiqish</span>
+</a>
+
+<!-- ═══════════════════════════════════════════════════
+     GLOBAL: DESKTOP NAV PILL
+═══════════════════════════════════════════════════ -->
+<div id="desktop-nav" class="hidden md:flex fixed left-1/2 -translate-x-1/2 top-4 z-[80] items-center bg-white/70 ethereal-blur px-2 py-2 rounded-full border border-outline-variant/10 shadow-lg gap-1">
+  <button onclick="showPage('login')" class="nav-pill px-5 py-2 rounded-full text-on-surface-variant font-medium text-sm" id="dnav-login">Kirish</button>
+  <button onclick="showPage('dashboard')" class="nav-pill px-5 py-2 rounded-full text-on-surface-variant font-medium text-sm" id="dnav-dashboard">Dashboard</button>
+  <button onclick="showPage('community')" class="nav-pill px-5 py-2 rounded-full text-on-surface-variant font-medium text-sm" id="dnav-community">Hamjamiyat</button>
+  <button onclick="showPage('evidence')" class="nav-pill px-5 py-2 rounded-full text-on-surface-variant font-medium text-sm" id="dnav-evidence">Ombor</button>
+  <div class="flex gap-1 ml-2 bg-surface-container-low rounded-full px-1 py-1">
+    <button class="lang-btn active px-3 py-1 rounded-full text-xs font-semibold transition-all" onclick="setLang(this,'UZ')">UZ</button>
+    <button class="lang-btn px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant transition-all" onclick="setLang(this,'RU')">RU</button>
+    <button class="lang-btn px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant transition-all" onclick="setLang(this,'EN')">EN</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     GLOBAL: BOTTOM NAV BAR (mobile)
+═══════════════════════════════════════════════════ -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 ethereal-blur shadow-[0_-4px_24px_rgba(49,51,50,0.06)] rounded-t-2xl md:hidden">
+  <button onclick="showPage('login')" class="bnav-item flex flex-col items-center text-on-surface-variant px-4 py-1" data-page="login">
+    <span class="material-symbols-outlined text-[22px]">spa</span>
+    <span class="text-[11px] font-medium mt-0.5">Panoh</span>
+  </button>
+  <button onclick="showPage('dashboard')" class="bnav-item flex flex-col items-center text-on-surface-variant px-4 py-1" data-page="dashboard">
+    <span class="material-symbols-outlined text-[22px]">home</span>
+    <span class="text-[11px] font-medium mt-0.5">Asosiy</span>
+  </button>
+  <button onclick="showPage('community')" class="bnav-item flex flex-col items-center text-on-surface-variant px-4 py-1" data-page="community">
+    <span class="material-symbols-outlined text-[22px]">group</span>
+    <span class="text-[11px] font-medium mt-0.5">Hamjamiyat</span>
+  </button>
+  <button onclick="showPage('evidence')" class="bnav-item flex flex-col items-center text-on-surface-variant px-4 py-1" data-page="evidence">
+    <span class="material-symbols-outlined text-[22px]">shield_lock</span>
+    <span class="text-[11px] font-medium mt-0.5">Ombor</span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1: LOGIN / FACE ID
+═══════════════════════════════════════════════════ -->
+<div id="page-login" class="page active fade-in min-h-screen">
+
+  <!-- Decorative ambient blobs -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="absolute -top-[15%] -right-[5%] w-[55%] h-[55%] rounded-full bg-primary-container/25 blur-[130px]"></div>
+    <div class="absolute top-[45%] -left-[8%] w-[45%] h-[45%] rounded-full bg-secondary-container/30 blur-[100px]"></div>
+    <div class="absolute bottom-0 right-[20%] w-[30%] h-[30%] rounded-full bg-tertiary-container/20 blur-[80px]"></div>
+  </div>
+
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 py-16 pt-24">
+    <!-- Minimal logo mark -->
+    <div class="mb-10 flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-low border border-outline-variant/10 shadow-sm">
+      <span class="material-symbols-outlined text-outline-variant text-3xl">spa</span>
+    </div>
+
+    <section class="max-w-xl w-full text-center space-y-10">
+
+      <!-- Hero headline -->
+      <div class="space-y-5">
+        <h1 class="headline text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
+          Faqat siz uchun<br/>xavfsiz makon.
+        </h1>
+        <p class="text-on-surface-variant text-lg font-light leading-relaxed px-4 max-w-md mx-auto">
+          Panohga xush kelibsiz. Mutlaq anonimlik va o'zaro qo'llab-quvvatlashga asoslangan hamjamiyat.
+        </p>
+      </div>
+
+      <!-- Feature bento 2-col -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+        <div class="p-6 bg-surface-container-low rounded-2xl space-y-3">
+          <span class="material-symbols-outlined text-secondary text-2xl">encrypted</span>
+          <h3 class="headline font-semibold text-on-surface">To'liq Maxfiylik</h3>
+          <p class="text-sm text-on-surface-variant leading-snug">Ma'lumotlaringiz hech qachon serverlarimizda saqlanmaydi. Shaxsingiz butunlay o'zingizda qoladi.</p>
+        </div>
+        <div class="p-6 bg-surface-container-highest/40 rounded-2xl space-y-3 md:mt-5">
+          <span class="material-symbols-outlined text-primary text-2xl">female</span>
+          <h3 class="headline font-semibold text-on-surface">Tasdiqlangan Hamjamiyat</h3>
+          <p class="text-sm text-on-surface-variant leading-snug">Xavfsiz muhitni ta'minlash uchun har bir a'zo maxfiy jarayon orqali tekshiriladi.</p>
+        </div>
+        <div class="p-6 bg-tertiary-container/30 rounded-2xl space-y-3">
+          <span class="material-symbols-outlined text-tertiary text-2xl">gavel</span>
+          <h3 class="headline font-semibold text-on-surface">Huquqiy Yordam</h3>
+          <p class="text-sm text-on-surface-variant leading-snug">O'zbekiston qonunlari bo'yicha soddalashtirilgan huquqiy ma'lumotlar va Lexuz integratsiyasi.</p>
+        </div>
+        <div class="p-6 bg-secondary-container/20 rounded-2xl space-y-3 md:mt-5">
+          <span class="material-symbols-outlined text-secondary text-2xl">psychology</span>
+          <h3 class="headline font-semibold text-on-surface">Psixologik Yordam</h3>
+          <p class="text-sm text-on-surface-variant leading-snug">Sertifikatlangan psixologlar bilan Zoom orqali shaxsiy seanslarga yozilish.</p>
+        </div>
+      </div>
+
+      <!-- Face ID portal card -->
+      <div class="mt-4 p-8 bg-surface-container-lowest ethereal-blur rounded-3xl shadow-xl border border-outline-variant/10 max-w-sm mx-auto">
+        <div class="space-y-7 flex flex-col items-center">
+          <!-- Animated face ID button -->
+          <div class="relative group" id="faceid-container">
+            <div class="absolute -inset-5 bg-primary-container/20 rounded-full blur-2xl group-hover:bg-primary-container/35 transition-all duration-500 pulse-ring"></div>
+            <div id="faceid-btn"
+              onclick="doFaceVerify()"
+              class="relative z-10 w-28 h-28 bg-surface-container-high rounded-3xl flex flex-col items-center justify-center gap-1 cursor-pointer active:scale-90 transition-transform duration-200 shadow-inner">
+              <span id="faceid-icon" class="material-symbols-outlined text-5xl text-primary ms-fill">face_unlock</span>
+              <span id="faceid-status" class="text-[9px] font-bold text-primary tracking-widest uppercase">Bosing</span>
+            </div>
+          </div>
+          <div class="text-center space-y-1.5">
+            <h2 class="headline font-bold text-xl text-on-surface">Xavfsiz kirish</h2>
+            <p class="text-sm text-on-surface-variant">Face ID orqali shaxsingizni tasdiqlash uchun bosing</p>
+          </div>
+          <button onclick="showPage('dashboard')"
+            class="w-full py-4 bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary-dim transition-colors shadow-lg shadow-primary/20">
+            Panohga kirish
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust metadata -->
+      <div class="flex flex-col items-center gap-3 pb-4">
+        <div class="flex items-center gap-2 text-outline text-xs tracking-widest uppercase font-semibold">
+          <span class="material-symbols-outlined text-sm ms-fill">verified_user</span>
+          Xavfsiz seans faol
+        </div>
+        <p class="text-[11px] text-on-surface-variant/60 max-w-xs mx-auto">
+          Kirish orqali siz hamjamiyatning maxfiyligini saqlashga rozilik bildirasiz.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Atmospheric footer images -->
+    <div class="mt-16 grid grid-cols-3 gap-4 w-full max-w-3xl opacity-30 mix-blend-multiply">
+      <div class="h-44 rounded-2xl bg-gradient-to-br from-primary-container to-secondary-container"></div>
+      <div class="h-44 rounded-2xl bg-gradient-to-br from-tertiary-container to-primary-container translate-y-6"></div>
+      <div class="h-44 rounded-2xl bg-gradient-to-br from-secondary-container to-tertiary-container"></div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2: DASHBOARD (Shaxsiy Xavfsizlik Paneli)
+═══════════════════════════════════════════════════ -->
+<div id="page-dashboard" class="page fade-in">
+
+  <header class="bg-surface sticky top-0 z-40">
+    <div class="flex justify-between items-center w-full px-6 py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+          <span class="material-symbols-outlined ms-fill">face_5</span>
+        </div>
+        <span class="headline text-xl font-semibold text-primary italic tracking-tight">Panoh</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:opacity-70 transition-opacity">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <div class="flex items-center gap-1.5 bg-secondary-container/30 px-3 py-1.5 rounded-full text-on-secondary-container">
+          <span class="material-symbols-outlined text-[16px] ms-fill">verified_user</span>
+          <span class="text-xs font-semibold">Himoyalangan</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-surface-container-low h-px w-full"></div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10 md:py-14 pb-32">
+
+    <!-- Welcome -->
+    <section class="mb-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
+        <div>
+          <h1 class="headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-2">Xush kelibsiz, Anonim Panoh</h1>
+          <p class="text-on-surface-variant text-lg max-w-2xl">Xavfsiz seans faol. Maxfiyligingiz bizning ustuvor vazifamizdir. Chuqur nafas oling — siz xavfsiz joydasiz.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+      <!-- Trauma Recovery Progress — large card (8 cols) -->
+      <div class="md:col-span-8 bg-surface-container-low rounded-3xl p-8 flex flex-col justify-between min-h-[280px]">
+        <div class="flex justify-between items-start mb-8">
+          <div>
+            <h2 class="headline text-2xl font-semibold mb-1">Sizning sog'ayish yo'lingiz</h2>
+            <p class="text-on-surface-variant text-sm">Travmadan tiklanish bosqichlari</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+        </div>
+        <div class="grid grid-cols-3 gap-5 mb-8">
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm">
+            <div class="headline font-bold text-3xl text-primary mb-1">12</div>
+            <div class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">Kunlik davomiylik</div>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm">
+            <div class="headline font-bold text-3xl text-primary mb-1">64%</div>
+            <div class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">Dastur yakunlandi</div>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm">
+            <div class="headline font-bold text-3xl text-primary mb-1">08</div>
+            <div class="text-[10px] font-semibold uppercase tracking-wider text-on-surface-variant">Xavfsiz qaydlar</div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium text-on-surface">Hissiy barqarorlik indeksi</span>
+            <span class="text-sm font-semibold text-primary">Rivojlanmoqda</span>
+          </div>
+          <div class="w-full bg-surface-container-highest rounded-full h-3">
+            <div class="bg-primary h-3 rounded-full w-[64%] shadow-[0_0_12px_rgba(80,87,169,0.25)]"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions (4 cols, stacked) -->
+      <div class="md:col-span-4 grid grid-cols-1 gap-6">
+        <div class="card-hover bg-primary text-on-primary rounded-3xl p-6 flex flex-col justify-between" onclick="showAssessment()">
+          <div class="flex justify-between items-start">
+            <span class="material-symbols-outlined text-3xl">assignment</span>
+            <span class="material-symbols-outlined text-on-primary/40 text-xl">arrow_forward</span>
+          </div>
+          <div class="mt-6">
+            <h3 class="headline text-xl font-bold mb-1">Kundalik psixologik test</h3>
+            <p class="text-sm text-primary-container">Bugungi his-tuyg'ularingizni tekshiring.</p>
+          </div>
+        </div>
+        <div class="card-hover bg-secondary-container text-on-secondary-container rounded-3xl p-6 flex flex-col justify-between" onclick="showPage('dashboard')">
+          <div class="flex justify-between items-start">
+            <span class="material-symbols-outlined text-3xl">smart_display</span>
+            <span class="material-symbols-outlined text-on-secondary-container/40 text-xl">play_circle</span>
+          </div>
+          <div class="mt-6">
+            <h3 class="headline text-xl font-bold mb-1">Video darslik</h3>
+            <p class="text-sm text-on-secondary-fixed-variant">Chegaralarni belgilash: 2-qism</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Video (6 cols) -->
+      <div class="md:col-span-6 bg-surface-container-low rounded-3xl overflow-hidden card-hover group">
+        <div class="h-52 relative bg-gradient-to-br from-primary-container/50 to-secondary-container/40 flex items-center justify-center">
+          <span class="material-symbols-outlined text-7xl text-primary/20">self_improvement</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 bg-surface-container-lowest/90 ethereal-blur rounded-full flex items-center justify-center text-primary shadow-xl">
+              <span class="material-symbols-outlined text-4xl ms-fill">play_arrow</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <span class="text-[10px] font-bold text-primary uppercase tracking-widest">Bugungi dars</span>
+          <h3 class="headline text-xl font-bold mt-2 mb-2">Master-klass: Vahimani engish</h3>
+          <p class="text-on-surface-variant text-sm line-clamp-2">Doktor Anora yuqori stressli daqiqalar uchun maxsus yerga bog'lanish usullarini tushuntiradi.</p>
+        </div>
+      </div>
+
+      <!-- Emergency + Legal (6 cols, 2-col grid) -->
+      <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="card-hover bg-error-container/10 border-2 border-error-container/20 rounded-3xl p-6 flex flex-col justify-between" onclick="showPage('evidence')">
+          <div>
+            <div class="w-12 h-12 bg-error rounded-2xl flex items-center justify-center text-on-error mb-4">
+              <span class="material-symbols-outlined">shield_lock</span>
+            </div>
+            <h3 class="headline text-xl font-bold text-on-error-container mb-2">Dalillar ombori</h3>
+            <p class="text-sm text-on-error-container/80 leading-relaxed">Hujjatlar va media uchun xavfsiz, shifrlangan xotira.</p>
+          </div>
+          <button class="mt-6 bg-error text-on-error py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity">Omborga kirish</button>
+        </div>
+        <div class="card-hover bg-tertiary-container/40 rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-tertiary rounded-2xl flex items-center justify-center text-on-tertiary mb-4">
+              <span class="material-symbols-outlined">gavel</span>
+            </div>
+            <h3 class="headline text-xl font-bold text-on-tertiary-container mb-2">Lexuz Legal</h3>
+            <p class="text-sm text-on-tertiary-container/80 leading-relaxed">O'zbekiston xavfsizlik qonunlari doirasidagi huquqlaringizni ko'rib chiqing.</p>
+          </div>
+          <button class="mt-6 bg-tertiary text-on-tertiary py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity">Qonunlarni qidirish</button>
+        </div>
+      </div>
+
+      <!-- Zoom Consultations (full width) -->
+      <div class="md:col-span-12 bg-surface-container-lowest rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10 shadow-sm">
+        <div class="flex-shrink-0 relative">
+          <div class="w-28 h-28 bg-gradient-to-br from-primary-container to-secondary-container rounded-3xl flex items-center justify-center shadow-lg">
+            <span class="material-symbols-outlined text-primary text-5xl">person</span>
+          </div>
+          <div class="absolute -bottom-2 -right-2 w-7 h-7 bg-green-500 border-4 border-surface-container-lowest rounded-full"></div>
+        </div>
+        <div class="flex-grow text-center md:text-left">
+          <span class="inline-block px-3 py-1 bg-primary-container/30 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-3">Jonli maslahat</span>
+          <h2 class="headline text-2xl font-bold mb-2">Mutaxassis bilan suhbat</h2>
+          <p class="text-on-surface-variant">Sertifikatlangan psixologlar 1-ga-1 Zoom seanslari uchun tayyor. Maxfiy va travmaga asoslangan g'amxo'rlik.</p>
+        </div>
+        <div class="flex-shrink-0 w-full md:w-auto">
+          <button class="w-full bg-primary text-on-primary px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-primary-dim transition-colors shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined">video_call</span>
+            Zoom seansini band qilish
+          </button>
+        </div>
+      </div>
+
+      <!-- Assessment modal (inline expandable) -->
+      <div id="assessment-panel" class="md:col-span-12 hidden fade-in">
+        <div class="bg-surface-container-lowest rounded-3xl p-8 border border-outline-variant/10 shadow-sm">
+          <div class="flex justify-between items-center mb-8">
+            <div>
+              <h2 class="headline text-2xl font-bold text-on-surface">Psixologik baholash</h2>
+              <p class="text-on-surface-variant text-sm mt-1">Ilmiy asoslangan stres va travma testi</p>
+            </div>
+            <button onclick="hideAssessment()" class="text-on-surface-variant hover:text-on-surface transition-colors">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+          <!-- Progress -->
+          <div class="mb-8">
+            <div class="flex justify-between text-xs text-on-surface-variant mb-2">
+              <span id="q-counter">3-savol / 10 dan</span>
+              <span id="q-pct">30%</span>
+            </div>
+            <div class="w-full bg-surface-container-high rounded-full h-2.5">
+              <div id="q-bar" class="bg-primary h-2.5 rounded-full transition-all duration-500" style="width:30%"></div>
+            </div>
+          </div>
+          <!-- Question -->
+          <div class="mb-8">
+            <h3 id="q-text" class="headline text-2xl font-bold text-on-surface mb-8 leading-snug">
+              Uyda o'zingizni qanchalik xavfsiz his qilasiz?
+            </h3>
+            <div id="q-options" class="flex flex-col gap-3">
+              <button onclick="selectOpt(this)" class="opt-btn text-left px-6 py-4 bg-surface-container-low rounded-2xl text-sm text-on-surface transition-all hover:bg-primary/10 hover:text-primary">Har doim — uy men uchun xavfsiz joy</button>
+              <button onclick="selectOpt(this)" class="opt-btn text-left px-6 py-4 bg-surface-container-low rounded-2xl text-sm text-on-surface transition-all hover:bg-primary/10 hover:text-primary">Odatda ha, lekin istisnolar bo'ladi</button>
+              <button onclick="selectOpt(this)" class="opt-btn text-left px-6 py-4 bg-surface-container-low rounded-2xl text-sm text-on-surface transition-all hover:bg-primary/10 hover:text-primary">Ba'zida tashvish yoki tarang his qilaman</button>
+              <button onclick="selectOpt(this)" class="opt-btn text-left px-6 py-4 bg-surface-container-low rounded-2xl text-sm text-on-surface transition-all hover:bg-primary/10 hover:text-primary">Kamdan-kam xavfsizlik his qilaman</button>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <p class="text-xs text-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm ms-fill">lock</span>
+              Barcha javoblar shifrlangan
+            </p>
+            <button onclick="nextQ()" class="bg-primary text-on-primary px-8 py-3.5 rounded-xl font-semibold hover:bg-primary-dim transition-colors">
+              Keyingi savol →
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3: COMMUNITY (Anonim Hamjamiyat)
+═══════════════════════════════════════════════════ -->
+<div id="page-community" class="page fade-in">
+
+  <header class="fixed top-0 w-full z-40 bg-surface">
+    <div class="flex justify-between items-center px-6 py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+          <span class="material-symbols-outlined ms-fill">face_5</span>
+        </div>
+        <h1 class="headline text-xl font-semibold text-primary italic tracking-tight">Panoh</h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:opacity-70">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button class="text-on-surface-variant hover:opacity-70">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+      </div>
+    </div>
+    <div class="bg-surface-container-low h-px w-full"></div>
+  </header>
+
+  <main class="pt-28 pb-36 px-6 max-w-5xl mx-auto">
+
+    <!-- Hero -->
+    <section class="mb-12">
+      <h2 class="headline text-4xl md:text-5xl font-bold text-primary mb-4 tracking-tight leading-tight">
+        Umumiy ovozlar,<br/>jimjit kuch.
+      </h2>
+      <p class="text-on-surface-variant max-w-lg text-lg leading-relaxed">
+        Sizni tushunadigan ayollar bilan bog'laning. 100% anonim, mutaxassislar tomonidan nazorat qilinadi va o'zaro hurmatga asoslangan.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-7">
+        <div class="flex items-center gap-2 px-4 py-2 bg-secondary-container/30 rounded-full">
+          <span class="material-symbols-outlined text-secondary text-sm ms-fill">verified_user</span>
+          <span class="text-xs font-bold text-on-secondary-container tracking-wide">24/7 NAZORAT OSTIDA</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 bg-tertiary-container/30 rounded-full">
+          <span class="material-symbols-outlined text-tertiary text-sm ms-fill">visibility_off</span>
+          <span class="text-xs font-bold text-on-tertiary-container tracking-wide">TO'LIQ ANONIM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento community grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+      <!-- Large featured card (8 cols) -->
+      <div class="md:col-span-8 bg-surface-container-lowest rounded-3xl p-8 flex flex-col justify-between min-h-[320px] relative overflow-hidden group shadow-sm card-hover">
+        <div class="relative z-10">
+          <div class="flex justify-between items-start mb-5">
+            <span class="px-4 py-1.5 bg-primary/10 text-primary text-sm font-bold rounded-full">Sog'lomlashtirish maskani</span>
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 rounded-full bg-primary-fixed border-2 border-surface-container-lowest"></div>
+              <div class="w-8 h-8 rounded-full bg-secondary-fixed border-2 border-surface-container-lowest"></div>
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed border-2 border-surface-container-lowest flex items-center justify-center text-[10px] font-bold text-on-tertiary-fixed">+2k</div>
+            </div>
+          </div>
+          <h3 class="headline text-3xl font-bold text-on-surface mb-3">Travmadan tiklanish</h3>
+          <p class="text-on-surface-variant max-w-md mb-8">Klinik qo'llab-quvvatlanadigan muhitda tajribalarni qayta ishlash uchun boshpana. Hukm qilish yo'q, faqat o'sish.</p>
+        </div>
+        <div class="relative z-10 bg-surface-container-low/60 p-5 rounded-2xl">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xs font-bold text-secondary uppercase tracking-widest">Foydalanuvchining so'nggi posti (24 yosh)</span>
+            <span class="text-[10px] text-outline">12 daqiqa avval</span>
+          </div>
+          <p class="text-sm italic text-on-surface line-clamp-2">"Bugun men birinchi marta og'irlik his qilmasdan nafas ololayotganimni his qildim. Qo'llab-quvvatlaganingiz uchun barchangizga rahmat..."</p>
+        </div>
+        <div class="absolute -right-12 -top-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/8 transition-colors"></div>
+      </div>
+
+      <!-- Legal Advice (4 cols) -->
+      <div class="md:col-span-4 bg-surface-container-low rounded-3xl p-6 flex flex-col shadow-sm card-hover">
+        <div class="w-12 h-12 bg-surface-container-lowest rounded-2xl flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-primary">gavel</span>
+        </div>
+        <h3 class="headline text-xl font-bold text-on-surface mb-2">Huquqiy maslahat</h3>
+        <p class="text-sm text-on-surface-variant mb-6 flex-grow leading-relaxed">Huquqlar, ajrashish to'g'risidagi qonunlar va himoya buyruqlarini tasdiqlangan huquqiy maslahatchilar bilan muhokama qiling.</p>
+        <div class="pt-4 border-t border-outline-variant/10">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-medium text-on-surface-variant">428 ta faol a'zo</span>
+            <button class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-on-primary">
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Healthy Relationships (4 cols) -->
+      <div class="md:col-span-4 bg-surface-container-low rounded-3xl p-6 flex flex-col shadow-sm card-hover">
+        <div class="w-12 h-12 bg-surface-container-lowest rounded-2xl flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-secondary">favorite</span>
+        </div>
+        <h3 class="headline text-xl font-bold text-on-surface mb-2">Sog'lom munosabatlar</h3>
+        <p class="text-sm text-on-surface-variant mb-5 flex-grow leading-relaxed">Xavf belgilarini aniqlash va chegaralarni o'rnatish. Tengdoshlar o'rtasidagi muhokama doirasi.</p>
+        <div class="bg-surface-container-highest/40 p-4 rounded-xl mb-4">
+          <span class="text-[10px] font-bold text-outline uppercase tracking-tight">Oxirgi post: 29 yosh</span>
+          <p class="text-xs text-on-surface mt-1 italic">"Aybdorlikni his qilmasdan o'z chegaralarimni qanday tushuntirsam bo'ladi?"</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          <span class="text-xs font-medium text-on-surface-variant">Hozir 89 kishi onlayn</span>
+        </div>
+      </div>
+
+      <!-- Motherhood (8 cols) -->
+      <div class="md:col-span-8 bg-secondary-container/15 rounded-3xl p-8 flex flex-col md:flex-row gap-8 shadow-sm">
+        <div class="flex-1">
+          <h3 class="headline text-2xl font-bold text-on-surface mb-2">Onalik va xavfsizlik</h3>
+          <p class="text-on-surface-variant mb-6 leading-relaxed">Qiyin o'tish davrlarini boshdan kechirayotgan va o'z farzandlarini himoya qilayotgan onalar uchun resurslar va qo'llab-quvvatlash.</p>
+          <div class="flex gap-3 flex-wrap">
+            <button class="px-5 py-2.5 bg-secondary text-on-secondary rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity">Muhokamaga qo'shilish</button>
+            <button class="px-5 py-2.5 bg-surface-container-lowest text-secondary rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity border border-secondary/20">Resurslarni ko'rish</button>
+          </div>
+        </div>
+        <div class="w-full md:w-44 aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-secondary-container to-tertiary-container flex items-center justify-center shadow-lg flex-shrink-0">
+          <span class="material-symbols-outlined text-secondary text-6xl">family_restroom</span>
+        </div>
+      </div>
+
+      <!-- New post composer -->
+      <div class="md:col-span-12 bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-outline-variant/10">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary font-bold text-sm">?</div>
+          <div>
+            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Anonim post</p>
+            <p class="text-xs text-outline">Faqat yoshingiz ko'rinadi</p>
+          </div>
+        </div>
+        <textarea placeholder="Fikrlaringizni xavfsiz ulashing..." class="w-full bg-surface-container-low rounded-2xl p-4 text-sm text-on-surface placeholder-outline resize-none border-none outline-none h-20"></textarea>
+        <div class="flex justify-end mt-3">
+          <button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-primary-dim transition-colors">Yuborish</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 4: EVIDENCE VAULT (Favqulodda Vaziyatlar Ombori)
+═══════════════════════════════════════════════════ -->
+<div id="page-evidence" class="page fade-in">
+
+  <header class="bg-surface sticky top-0 z-40">
+    <div class="flex justify-between items-center w-full px-6 py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-[18px]">shield</span>
+        </div>
+        <h1 class="headline text-xl font-semibold text-primary italic tracking-tight">Panoh</h1>
+      </div>
+      <button class="text-primary hover:opacity-70 transition-opacity">
+        <span class="material-symbols-outlined ms-fill">face_5</span>
+      </button>
+    </div>
+    <div class="bg-surface-container-low h-px w-full"></div>
+  </header>
+
+  <main class="px-6 pt-10 pb-36 max-w-md mx-auto">
+
+    <!-- Editorial header -->
+    <section class="mb-10">
+      <h2 class="headline text-3xl font-extrabold text-on-surface tracking-tight leading-tight mb-2">Favqulodda vaziyatlar ombori</h2>
+      <p class="text-on-surface-variant text-base leading-relaxed">Dalillarni avtomatik to'plash va saqlash uchun xavfsiz joyingiz.</p>
+    </section>
+
+    <!-- Stress-Activated Record Button -->
+    <section class="mb-10">
+      <div class="bg-surface-container-low rounded-3xl p-8 text-center relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-40 h-40 bg-primary-container opacity-20 rounded-full blur-3xl"></div>
+
+        <!-- Record button with pulse rings -->
+        <div class="relative flex items-center justify-center mb-8" id="record-container">
+          <div id="ring1" class="absolute w-52 h-52 rounded-full border-2 border-primary/20" style="display:none"></div>
+          <div id="ring2" class="absolute w-44 h-44 rounded-full border-2 border-primary/15" style="display:none"></div>
+          <button id="record-btn"
+            onclick="toggleRecord()"
+            class="record-btn relative z-10 w-40 h-40 rounded-full bg-surface-container-lowest shadow-lg border-8 border-primary-container/25 flex flex-col items-center justify-center gap-2 mx-auto transition-transform duration-200">
+            <span id="record-icon" class="material-symbols-outlined text-5xl text-primary ms-fill">mic_none</span>
+            <span id="record-label" class="text-[9px] font-bold text-primary tracking-widest uppercase">Faollashtirish uchun bosing</span>
+          </button>
+        </div>
+
+        <div>
+          <h3 class="headline text-lg font-semibold mb-2" id="record-title">Stress holatida yozib olishni boshlash</h3>
+          <p class="text-sm text-on-surface-variant px-4 leading-relaxed" id="record-desc">
+            Agar juftlashgan qurilmangiz orqali yuqori stress ko'rsatkichlari yoki yurak urish tezligining oshishi aniqlansa, ombor avtomatik ravishda yozib olishni boshlaydi.
+          </p>
+        </div>
+
+        <!-- Recording timer (hidden until active) -->
+        <div id="record-timer" class="hidden mt-5 flex items-center justify-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+          <span id="timer-display" class="font-mono font-bold text-error text-lg">00:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Encryption trust banner -->
+    <section class="mb-10 flex items-start gap-4 bg-primary-container/10 p-5 rounded-2xl">
+      <span class="material-symbols-outlined text-primary mt-1">encrypted</span>
+      <div>
+        <h4 class="font-bold text-on-primary-fixed-variant text-sm mb-1">To'liq shifrlangan</h4>
+        <p class="text-xs text-on-surface-variant leading-normal">Barcha yozuvlar shaxsiy kalitingiz bilan darhol shifrlanadi va xavfsiz offshor bulutli omborga ko'chiriladi. Kirish faqat biometrik identifikatoringiz orqali amalga oshiriladi.</p>
+      </div>
+    </section>
+
+    <!-- Evidence list -->
+    <section class="space-y-4">
+      <div class="flex justify-between items-center mb-5">
+        <h3 class="headline text-lg font-semibold">Oldingi dalillar</h3>
+        <button class="text-primary text-sm font-medium">Arxivni ko'rish</button>
+      </div>
+
+      <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex items-center justify-between card-hover">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-error-container/10 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-error ms-fill">graphic_eq</span>
+          </div>
+          <div>
+            <p class="headline font-bold text-sm">24-oktabr, 2023 · 23:42</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="inline-block w-2 h-2 rounded-full bg-error"></span>
+              <p class="text-xs text-on-surface-variant">Yuqori stress aniqlandi (114 BPM)</p>
+            </div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+      </div>
+
+      <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex items-center justify-between card-hover">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-secondary-container/20 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-secondary ms-fill">mic</span>
+          </div>
+          <div>
+            <p class="headline font-bold text-sm">21-oktabr, 2023 · 08:15</p>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+              <p class="text-xs text-on-surface-variant">Qo'lda faollashtirildi (4d 12s)</p>
+            </div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+      </div>
+
+      <div class="bg-surface-container-low p-5 rounded-2xl flex items-center gap-4">
+        <div class="w-10 h-10 bg-outline-variant/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-outline text-lg">info</span>
+        </div>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Eski yozuvlar 30 kundan keyin arxivlanadi, ammo qonuniy so'rov asosida tiklanishi mumkin.</p>
+      </div>
+    </section>
+
+    <!-- Crisis hotline -->
+    <section class="mt-10 bg-error-container/10 border border-error-container/20 rounded-2xl p-6 text-center">
+      <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Favqulodda holat yordam liniyasi</p>
+      <div class="headline text-5xl font-extrabold text-error mb-2">1146</div>
+      <p class="text-sm text-on-surface-variant">Bepul · Anonimlik · 24/7</p>
+      <button class="mt-5 bg-error text-on-error px-8 py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-opacity">Qo'ng'iroq qilish</button>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// ── PAGE NAVIGATION ──────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  var el = document.getElementById('page-' + id);
+  if (el) el.classList.add('active');
+  // Update desktop nav active state
+  document.querySelectorAll('[id^="dnav-"]').forEach(btn => {
+    btn.classList.remove('bg-primary', 'text-on-primary');
+    btn.classList.add('text-on-surface-variant');
+  });
+  var activeNav = document.getElementById('dnav-' + id);
+  if (activeNav) {
+    activeNav.classList.add('bg-primary', 'text-on-primary');
+    activeNav.classList.remove('text-on-surface-variant');
+  }
+  // Update bottom nav
+  document.querySelectorAll('.bnav-item').forEach(btn => {
+    btn.classList.remove('text-primary', 'bg-primary-container/20');
+    btn.classList.add('text-on-surface-variant');
+  });
+  var activeBnav = document.querySelector('.bnav-item[data-page="' + id + '"]');
+  if (activeBnav) {
+    activeBnav.classList.add('text-primary', 'bg-primary-container/20');
+    activeBnav.classList.remove('text-on-surface-variant');
+  }
+  window.scrollTo(0, 0);
+}
+
+// ── FACE ID VERIFY ───────────────────────────────
+var faceVerified = false;
+function doFaceVerify() {
+  if (faceVerified) return;
+  var icon = document.getElementById('faceid-icon');
+  var status = document.getElementById('faceid-status');
+  icon.textContent = 'hourglass_top';
+  status.textContent = 'Skanerlash...';
+  setTimeout(function() {
+    icon.textContent = 'check_circle';
+    icon.style.color = '#1f6969';
+    status.textContent = 'Tasdiqlandi!';
+    faceVerified = true;
+  }, 2200);
+}
+
+// ── LANG TOGGLE ──────────────────────────────────
+function setLang(el, lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── ASSESSMENT ───────────────────────────────────
+var questions = [
+  { q: "Uyda o'zingizni qanchalik xavfsiz his qilasiz?", pct: 30, num: "3-savol / 10 dan",
+    opts: ["Har doim — uy men uchun xavfsiz joy","Odatda ha, lekin istisnolar bo'ladi","Ba'zida tashvish yoki tarang his qilaman","Kamdan-kam xavfsizlik his qilaman"] },
+  { q: "Yaqin atrofingizdagi biror kishidan qo'rquvni his qilasizmi?", pct: 40, num: "4-savol / 10 dan",
+    opts: ["Yo'q, hech qachon","Ba'zan noqulaylik his qilaman","Tez-tez qo'rqinch his qilaman","Ha, doimiy qo'rqinch bor"] },
+  { q: "Kimdir sizning aloqalaringiz yoki harakatlaringizni nazorat qiladimi?", pct: 50, num: "5-savol / 10 dan",
+    opts: ["Yo'q, men mustaqilman","Ba'zida nazorat his qilaman","Ko'pincha cheklanish his qilaman","Ha, doim nazorat ostidaman"] },
+  { q: "Xotirangiz yoki his-tuyg'ularingizga tez-tez shubha qilib ko'rasizmi?", pct: 60, num: "6-savol / 10 dan",
+    opts: ["Yo'q, o'z his-tuyg'ularimarimga ishonaman","Kamdan-kam shubhalanaman","Ba'zida o'z fikrlarimmga ishonmayman","Ko'pincha o'zimga shubhalanaman"] },
+];
+var qIdx = 0;
+function showAssessment() {
+  var panel = document.getElementById('assessment-panel');
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  renderQ();
+}
+function hideAssessment() {
+  document.getElementById('assessment-panel').classList.add('hidden');
+}
+function renderQ() {
+  var q = questions[qIdx % questions.length];
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-pct').textContent = q.pct + '%';
+  document.getElementById('q-counter').textContent = q.num;
+  document.getElementById('q-bar').style.width = q.pct + '%';
+  var container = document.getElementById('q-options');
+  container.innerHTML = '';
+  q.opts.forEach(function(opt) {
+    var btn = document.createElement('button');
+    btn.className = 'opt-btn text-left px-6 py-4 bg-surface-container-low rounded-2xl text-sm text-on-surface transition-all hover:bg-primary-container/30 hover:text-primary';
+    btn.textContent = opt;
+    btn.onclick = function() { selectOpt(this); };
+    container.appendChild(btn);
+  });
+}
+function selectOpt(el) {
+  document.querySelectorAll('.opt-btn').forEach(b => {
+    b.classList.remove('bg-primary-container/30','text-primary','font-semibold','ring-2','ring-primary/30');
+    b.classList.add('bg-surface-container-low','text-on-surface');
+  });
+  el.classList.add('bg-primary-container/30','text-primary','font-semibold');
+  el.classList.remove('bg-surface-container-low','text-on-surface');
+}
+function nextQ() {
+  qIdx++;
+  renderQ();
+}
+
+// ── RECORDING ────────────────────────────────────
+var recording = false;
+var timerInt = null;
+var seconds = 0;
+function toggleRecord() {
+  recording = !recording;
+  var btn = document.getElementById('record-btn');
+  var icon = document.getElementById('record-icon');
+  var label = document.getElementById('record-label');
+  var title = document.getElementById('record-title');
+  var desc = document.getElementById('record-desc');
+  var timer = document.getElementById('record-timer');
+  if (recording) {
+    icon.textContent = 'stop_circle';
+    icon.style.color = '#a8364b';
+    label.textContent = "To'xtatish uchun bosing";
+    label.style.color = '#a8364b';
+    btn.style.borderColor = 'rgba(168,54,75,0.3)';
+    title.textContent = "Yozib olinmoqda...";
+    desc.textContent = "Audio yozuv faol. Har qanday ovoz xavfsiz tarzda saqlanmoqda.";
+    timer.classList.remove('hidden');
+    timer.style.display = 'flex';
+    seconds = 0;
+    timerInt = setInterval(function() {
+      seconds++;
+      var m = String(Math.floor(seconds/60)).padStart(2,'0');
+      var s = String(seconds%60).padStart(2,'0');
+      document.getElementById('timer-display').textContent = m + ':' + s;
+    }, 1000);
+  } else {
+    clearInterval(timerInt);
+    icon.textContent = 'mic_none';
+    icon.style.color = '';
+    label.textContent = "Faollashtirish uchun bosing";
+    label.style.color = '';
+    btn.style.borderColor = '';
+    title.textContent = "Yozib olish yakunlandi";
+    desc.textContent = "Yozuv xavfsiz shifrlandi va omborda saqlandi. Qonuniy dalil sifatida ishlatish mumkin.";
+    timer.style.display = 'none';
+    timer.classList.add('hidden');
+  }
+}
+
+// ── INIT ─────────────────────────────────────────
+showPage('login');
+</script>
+</body>
+</html>
