@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#cde5ff",
+              "surface-bright": "#fbfbe2",
+              "primary": "#745475",
+              "outline-variant": "#cfc3cc",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#91b1d0",
+              "secondary": "#7b5455",
+              "inverse-on-surface": "#f2f2d9",
+              "surface-container": "#efefd7",
+              "surface-container-high": "#eaead1",
+              "on-secondary-fixed-variant": "#613d3e",
+              "primary-fixed-dim": "#e2bae1",
+              "on-background": "#1b1d0e",
+              "tertiary-fixed-dim": "#aacaea",
+              "on-tertiary-container": "#24445f",
+              "surface-variant": "#e4e4cc",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#7e747c",
+              "secondary-container": "#fecbcb",
+              "tertiary": "#42617d",
+              "surface": "#fbfbe2",
+              "on-tertiary-fixed": "#001d32",
+              "on-primary-container": "#553757",
+              "surface-tint": "#745475",
+              "surface-dim": "#dbdcc3",
+              "surface-container-low": "#f5f5dc",
+              "on-surface-variant": "#4c444b",
+              "on-secondary-container": "#7a5354",
+              "primary-container": "#c8a2c8",
+              "on-tertiary-fixed-variant": "#294964",
+              "on-primary-fixed-variant": "#5a3c5d",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "on-primary-fixed": "#2b112f",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#2f1314",
+              "inverse-primary": "#e2bae1",
+              "surface-container-highest": "#e4e4cc",
+              "background": "#fbfbe2",
+              "primary-fixed": "#ffd6fe",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ecbaba",
+              "secondary-fixed": "#ffdad9",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1d0e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .tonal-transition {
+        transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low font-body text-on-surface min-h-screen">
+<!-- Suppressed Navigation Shell for Focused Onboarding Flow -->
+<!-- Main Content Canvas -->
+<main class="max-w-md mx-auto px-6 pt-12 pb-24 min-h-screen flex flex-col">
+<!-- Welcome Section -->
+<header class="mb-10 text-center">
+<div class="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary-container/30 text-primary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<h1 class="text-3xl font-extrabold tracking-tight text-on-surface leading-tight mb-3">
+                Siz bu yerda xavfsizsiz
+            </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed px-4">
+                Keling, sizga eng mos yordamni topish uchun kichik muloqotni boshlaymiz.
+            </p>
+</header>
+<!-- Multi-step Self-Test UI -->
+<section class="flex-grow flex flex-col">
+<!-- Progress Bar -->
+<div class="mb-10 px-2">
+<div class="flex justify-between items-center mb-3">
+<span class="text-sm font-semibold text-primary">Hissiy holat tahlili</span>
+<span class="text-sm font-medium text-on-surface-variant">40% bajarildi</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[40%] rounded-full transition-all duration-700"></div>
+</div>
+</div>
+<!-- Question Card -->
+<div class="glass-card p-8 rounded-xl shadow-[0_8px_32px_rgba(116,84,117,0.06)] flex flex-col gap-8">
+<div class="flex items-start gap-4">
+<div class="text-primary-container bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-2xl">psychology_alt</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface leading-snug">
+                        Oxirgi ikki hafta ichida o'zingizni qanday his qilyapsiz?
+                    </h2>
+</div>
+<!-- Answer Options (Bento Style Selection) -->
+<div class="grid grid-cols-1 gap-4">
+<button class="flex items-center justify-between p-5 rounded-lg bg-surface-container-lowest hover:bg-primary/5 transition-all group border-none text-left">
+<span class="text-on-surface font-medium">Xotirjam va barqaror</span>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+</button>
+<button class="flex items-center justify-between p-5 rounded-lg bg-surface-container-lowest hover:bg-primary/5 transition-all group border-none text-left">
+<span class="text-on-surface font-medium">Biroz tashvishli yoki charchagan</span>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+</button>
+<button class="flex items-center justify-between p-5 rounded-lg bg-primary/10 transition-all border-none text-left ring-2 ring-primary">
+<span class="text-on-surface font-semibold">Tushkun va umidsiz</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs" style="font-variation-settings: 'FILL' 0, 'wght' 700;">check</span>
+</div>
+</button>
+<button class="flex items-center justify-between p-5 rounded-lg bg-surface-container-lowest hover:bg-primary/5 transition-all group border-none text-left">
+<span class="text-on-surface font-medium">Tez-tez qo'rquv hissi bor</span>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary transition-colors flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+</button>
+</div>
+</div>
+<!-- AI Insight Hint -->
+<div class="mt-8 flex items-center gap-4 p-4 rounded-lg bg-tertiary-container/20 border border-tertiary-container/30">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<p class="text-sm font-medium text-on-tertiary-container">
+                    Sizning javoblaringiz AI tomonidan shaxsiy tavsiyalar yaratish uchun tahlil qilinadi.
+                </p>
+</div>
+<!-- Action Buttons -->
+<div class="mt-auto pt-10 flex flex-col gap-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-5 rounded-full font-bold text-lg shadow-[0_8px_32px_rgba(116,84,117,0.15)] active:scale-95 transition-transform duration-300">
+                    Keyingisi
+                </button>
+<button class="w-full py-4 text-on-surface-variant font-semibold hover:bg-surface-container transition-colors rounded-full text-base">
+                    Hozircha o'tkazib yuborish
+                </button>
+</div>
+</section>
+<!-- Decorative Elements for Soft Atmosphere -->
+<div class="fixed top-0 right-0 -z-10 w-64 h-64 bg-primary-container/20 rounded-full blur-[100px]"></div>
+<div class="fixed bottom-20 left-0 -z-10 w-72 h-72 bg-tertiary-container/20 rounded-full blur-[120px]"></div>
+<!-- Supportive Feature Section -->
+<section class="mt-16 pb-12">
+<h3 class="text-sm font-bold text-primary uppercase tracking-widest mb-6">Bizning ustuvorligimiz</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-5 rounded-lg bg-surface-container-high/50 flex flex-col gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">lock_person</span>
+<span class="text-sm font-bold text-on-surface">Maxfiylik</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">Ma'lumotlaringiz shifrlangan va xavfsiz holatda saqlanadi.</p>
+</div>
+<div class="p-5 rounded-lg bg-surface-container-high/50 flex flex-col gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<span class="text-sm font-bold text-on-surface">Empatiya</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">Insoniy qadriyatlarga asoslangan AI yordamchisi.</p>
+</div>
+</div>
+</section>
+<!-- Quick Exit Button (Design System Requirement) -->
+<button class="fixed top-6 right-6 z-[60] w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">close</span>
+</button>
+</main>
+<!-- Visual Identity Background Images -->
+<div class="hidden">
+<img class="hidden" data-alt="Soft lavender colored flowers in morning mist with a gentle sunbeam filtering through the atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASV9u9n4SU_zpVLAmAvXat-cTqN2GHbusdspgbEKHap1KIoSam1v42xBsE-MZqLdiis56rl4Fs_gveLPw2TieaaMHz0QqvmHh3zhiRguIoM1154O0tulGquc9-COqFXMb4H7PpGrxKWJfXl_wV3rK9QLHvqid5QaqZ3JAEDWD6W9lx-Go-O6TjlAbhl5AHwXrQ7PAHYbbodbs0G5Pb9iedF0MKEsStqcaKDYFM16jfBofvNjVlhstbDSEteVQrdYCylS2ZbWtN-A"/>
+</div>
+</body></html>

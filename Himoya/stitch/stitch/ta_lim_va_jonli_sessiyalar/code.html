@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#cde5ff",
+              "surface-bright": "#fbfbe2",
+              "primary": "#745475",
+              "outline-variant": "#cfc3cc",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#91b1d0",
+              "secondary": "#7b5455",
+              "inverse-on-surface": "#f2f2d9",
+              "surface-container": "#efefd7",
+              "surface-container-high": "#eaead1",
+              "on-secondary-fixed-variant": "#613d3e",
+              "primary-fixed-dim": "#e2bae1",
+              "on-background": "#1b1d0e",
+              "tertiary-fixed-dim": "#aacaea",
+              "on-tertiary-container": "#24445f",
+              "surface-variant": "#e4e4cc",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#7e747c",
+              "secondary-container": "#fecbcb",
+              "tertiary": "#42617d",
+              "surface": "#fbfbe2",
+              "on-tertiary-fixed": "#001d32",
+              "on-primary-container": "#553757",
+              "surface-tint": "#745475",
+              "surface-dim": "#dbdcc3",
+              "surface-container-low": "#f5f5dc",
+              "on-surface-variant": "#4c444b",
+              "on-secondary-container": "#7a5354",
+              "primary-container": "#c8a2c8",
+              "on-tertiary-fixed-variant": "#294964",
+              "on-primary-fixed-variant": "#5a3c5d",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "on-primary-fixed": "#2b112f",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#2f1314",
+              "inverse-primary": "#e2bae1",
+              "surface-container-highest": "#e4e4cc",
+              "background": "#fbfbe2",
+              "primary-fixed": "#ffd6fe",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ecbaba",
+              "secondary-fixed": "#ffdad9",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1d0e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbfbe2; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface selection:bg-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 bg-stone-50/70 dark:bg-zinc-900/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(116,84,117,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-fuchsia-800 dark:text-fuchsia-200" data-icon="spa">spa</span>
+<span class="text-xl font-bold text-fuchsia-900 dark:text-fuchsia-100">Siz bu yerda xavfsizsiz</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-fuchsia-50/50 transition-colors active:scale-90 duration-300">
+<span class="material-symbols-outlined text-zinc-500" data-icon="psychology">psychology</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Hero Section: Jonli Zoom sessiyalari -->
+<section class="mb-12">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-8 lg:p-12 border border-outline-variant/10 shadow-sm">
+<div class="relative z-10 lg:w-2/3">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs mb-4 uppercase tracking-widest">Hozir Efirda</span>
+<h1 class="text-3xl md:text-4xl font-extrabold text-on-surface mb-6 leading-tight">Jonli Zoom sessiyalari</h1>
+<!-- Speakers Thumbnails -->
+<div class="flex items-center -space-x-4 mb-8">
+<div class="w-14 h-14 rounded-full border-4 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional smiling middle-aged psychologist woman with warm friendly expression wearing glasses in clinical office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHAcuWQUHiliaRv61t68lgzIfsdt_LK8vO0oQYczc8QYm6eJ3nWMqEavcCrkbP5i8hqWRMQ4JHnUIOaSDmdtOPJzpSga_c8b2W3wswEQPOYzRbxsqpZCDSSp-uowTEDuRkxzRTX7NIEI1dVqXl_FG2IXINlKZe5N7_PJuMCbpXSvlkrJOCWNEbVNr0ne3i6GGBfpHMLKkfDZMMXIQ3e4yrc0DH_PYKxUPZTx527KVBrMFBl1o_OrElHsPc7OHs3F3ImqviutbMRg"/>
+</div>
+<div class="w-14 h-14 rounded-full border-4 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident female counselor with a gentle smile in a softly lit modern workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhG8vYK7oElaPsfNwS6aq2E5MvhpcFVb8zX1iJeEB2GCL1QE7s-GDSsXIbt6O6ikR6imN1F-G9iJQ7VHqu4qF9ji8HjrXGTfhY6XItsd1jFIHLRBg-NthTjhBrtM4LRPnarsSSJHTWlahfOHbXyv2-Dh4SWLbk0Gk66XZB3Em_4FGi0W9uqS_gpgVa3NnvmOrj-j_Pg24QIbFjLx2cdXekFWTQ1gwwLKnoFLyF5dfRv2YcQMuaj7XWgsR9tD7f36m7VNYrdhcCQA"/>
+</div>
+<div class="w-14 h-14 rounded-full border-4 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="male professional coach with a kind and supportive look against a neutral soft-toned background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX-jYsjtsAmvJX-PmHVIMVuG6utMzgD-hJmAgKcY_mLo9HXfStzTng4LrTscP7iqsgYIhcMre2QziaKF-_TJYmmDu8F1NvxQppNCtub_6YntaYg41o4ey38OapdDr1t5wNoBdVI6lzfV4kkBF8yowFJtURrIoCbhfVtMBzpirh-TQv-TZF6FFstlahXjAG2BjJ_CjzD3cF0sCZK6_p4Z6k91EXHoVH8FDYYZLShwWa25MFvGhYjbkfstGOtqP9Vz6v3gPX2HPt3Q"/>
+</div>
+<div class="ml-8 flex flex-col">
+<span class="text-sm font-bold text-on-surface">3 ta mutaxassis</span>
+<span class="text-xs text-on-surface-variant">+240 ishtirokchi</span>
+</div>
+</div>
+<button class="flex items-center gap-3 px-8 py-4 bg-[#FFDAB9] text-[#5D4037] font-bold rounded-full hover:shadow-lg transition-all active:scale-95 duration-300">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+                        Hozir qo'shilish
+                    </button>
+</div>
+<!-- Abstract Decorative Background -->
+<div class="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-primary-container/20 to-transparent pointer-events-none"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl"></div>
+</div>
+</section>
+<!-- Categories & Video List -->
+<section class="space-y-12">
+<!-- Category: Sog'lomlashtirish -->
+<div>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">Sog'lomlashtirish</h2>
+<p class="text-on-surface-variant text-sm mt-1">Ruh va tana muvozanati darslari</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Barchasi</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Video Card 1 -->
+<div class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(116,84,117,0.1)]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="peaceful woman meditating by a calm lake during sunrise with soft golden light and morning mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApDmAk9e7XvzbPPU27zXcBXGZ98Os7U1mfh4wgEISWyXMLF5Q2uUuG0bAH6Ftnqsl_Zhs84p0um7ZT6FbdaazM2NmGMFncrS--fsPZy5l-wLTgRJechgvqPgblNNsVRX9YhprQ9qUADMcbkdyA2pbWdzgSHfQ603CzP26V4PNl-OonXTZspY317NWrGKknyLWtbJyvJ3h5VrURNl_RKe5i9ZAJqSWi3dWM13BvRrV918SI0ifI_bCYZ1qRWiJDzDl5MCD49JJ1mg"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-primary transform scale-90 group-hover:scale-100 transition-transform shadow-xl">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 rounded text-[10px] text-white font-medium backdrop-blur-sm">12:45</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-on-surface text-lg leading-tight mb-2">Tonggi meditatsiya asoslari</h3>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface-variant">Dr. Malika Karimova</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="favorite">favorite</span>
+</div>
+</div>
+</div>
+<!-- Video Card 2 -->
+<div class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(116,84,117,0.1)]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="person practicing yoga in a bright minimalist studio with high ceilings and natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtS6xLeXyoSgjhDgTeQRe4p3ewhmWY2gBExmUKWeAMyP6R15LXhRxuIhTekX5JmQwZOWZUx8nxBXWF2u1owEEZk-JPulTAcunX1MJYPSy9ytZB51RijC5-ZJ5pq3CI-y36F4wK_Q2Cxxv008bMEZ7o7I_WTdSIHOZGTtYlqcsnKuh0wOJpby_UOronJ1hcsL_yfLNUM8A1EoXSImoXRx3euwYRvaHEeAhhEWEpirfpBwGeifpCyFECrVeMgQraCq_I-jfZuBo3Ag"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-primary transform scale-90 group-hover:scale-100 transition-transform shadow-xl">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 rounded text-[10px] text-white font-medium backdrop-blur-sm">24:10</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-on-surface text-lg leading-tight mb-2">Stressni boshqarish texnikasi</h3>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface-variant">Psixolog Jasur Bekmirzayev</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="favorite">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Huquqiy erkinlik -->
+<div>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">Huquqiy erkinlik</h2>
+<p class="text-on-surface-variant text-sm mt-1">O'z huquqlaringizni bilish va himoya qilish</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Barchasi</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Video Card 3 -->
+<div class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(116,84,117,0.1)]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="legal gavel on a wooden desk with blurred library background representing justice and law" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDAs4l7RDaFOnum-q0fvbrW4jarNG31gAlEKgMb9N_SDZuFxRo0fipQ-_pBK4OoxUA2eoYfctsS6WwV_6c5ST6mYxdRvCnPPMOXkIjpMieY0EAXbXjhWyojJmAO-jZl6LOsOwHZnNRo7M3WUjl42m2QkZbRlsdrEwmEvZ3o636nouDBMbOfJ1W77pGjlVN3soHYeHqzGzS42jioCzSHBXjjg3cEFxsIcCFbyEd96zZWJ41TrOi0LZNSpDe_SBSaHTSWvAzIYgHbw"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-primary transform scale-90 group-hover:scale-100 transition-transform shadow-xl">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 rounded text-[10px] text-white font-medium backdrop-blur-sm">18:30</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-on-surface text-lg leading-tight mb-2">Ayollar huquqlari: 2024 yangiliklari</h3>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface-variant">Advokat Dilshoda Ahmedova</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="favorite">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: O'z-o'zini hurmat qilish -->
+<div>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">O'z-o'zini hurmat qilish</h2>
+<p class="text-on-surface-variant text-sm mt-1">Shaxsiy o'sish va ichki ishonch</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Barchasi</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Video Card 4 -->
+<div class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(116,84,117,0.1)]">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover" data-alt="a diverse group of people sitting together talking in a cozy warmly lit circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9twSi32saLj-CjiNz-BTZFKlM51_8BHThVtrEMzWyM2mqbx9NfJklAUTaQuG114Ry1Ui_BVJd4bPulfxm9-nfA4hlE3X_JVcxkxNJyJCSa0JgqtEYYtplDZMVx92RzrMUbFAtCjc39bEYSSZ61i34dbsTRjTxNqW2C-YpeMIUh3RSBx__gPAQCtEdpuqNC43xZMCcld-Us5mQNrFGCWMkgeP4-TC73l3nVk39K07TqMhxXb3qnxY6Z73-6y-3qHWtoX1zQunXcQ"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-primary transform scale-90 group-hover:scale-100 transition-transform shadow-xl">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 rounded text-[10px] text-white font-medium backdrop-blur-sm">45:00</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-on-surface text-lg leading-tight mb-2">Ichki tanqidchini qanday to'xtatish?</h3>
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface-variant">Master Nilufar Rahimova</span>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="favorite">favorite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-fuchsia-200/70 dark:bg-fuchsia-900/40 backdrop-blur-2xl rounded-t-[3rem] shadow-[0_-8px_32px_rgba(116,84,117,0.08)] z-50">
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold mt-1">Asosiy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold mt-1">Hamjamiyat</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-fuchsia-700 to-fuchsia-400 text-white rounded-full p-3 shadow-lg active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold mt-1">Ta'lim</span>
+</a>
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold mt-1">Profil</span>
+</a>
+</nav>
+</body></html>

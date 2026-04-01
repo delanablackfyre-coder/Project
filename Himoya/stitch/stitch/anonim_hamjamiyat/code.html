@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI-Supporter Jamiyati</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#cde5ff",
+              "surface-bright": "#fbfbe2",
+              "primary": "#745475",
+              "outline-variant": "#cfc3cc",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#91b1d0",
+              "secondary": "#7b5455",
+              "inverse-on-surface": "#f2f2d9",
+              "surface-container": "#efefd7",
+              "surface-container-high": "#eaead1",
+              "on-secondary-fixed-variant": "#613d3e",
+              "primary-fixed-dim": "#e2bae1",
+              "on-background": "#1b1d0e",
+              "tertiary-fixed-dim": "#aacaea",
+              "on-tertiary-container": "#24445f",
+              "surface-variant": "#e4e4cc",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#7e747c",
+              "secondary-container": "#fecbcb",
+              "tertiary": "#42617d",
+              "surface": "#fbfbe2",
+              "on-tertiary-fixed": "#001d32",
+              "on-primary-container": "#553757",
+              "surface-tint": "#745475",
+              "surface-dim": "#dbdcc3",
+              "surface-container-low": "#f5f5dc",
+              "on-surface-variant": "#4c444b",
+              "on-secondary-container": "#7a5354",
+              "primary-container": "#c8a2c8",
+              "on-tertiary-fixed-variant": "#294964",
+              "on-primary-fixed-variant": "#5a3c5d",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "on-primary-fixed": "#2b112f",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#2f1314",
+              "inverse-primary": "#e2bae1",
+              "surface-container-highest": "#e4e4cc",
+              "background": "#fbfbe2",
+              "primary-fixed": "#ffd6fe",
+              "on-secondary": "#ffffff",
+              "secondary-fixed-dim": "#ecbaba",
+              "secondary-fixed": "#ffdad9",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1d0e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-transition {
+            transition: background-color 0.3s ease;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fbfbe2;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #745475 0%, #c8a2c8 100%);
+        }
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-zinc-900/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(116,84,117,0.06)] flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-fuchsia-800 dark:text-fuchsia-200">spa</span>
+<h1 class="text-xl font-bold text-fuchsia-900 dark:text-fuchsia-100 tracking-tight">Siz bu yerda xavfsizsiz</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-fuchsia-50/50 dark:hover:bg-zinc-800/50 transition-colors p-2 rounded-full active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-fuchsia-800 dark:text-fuchsia-200">psychology</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Privacy Disclaimer (The Lock) -->
+<section class="bg-tertiary-container/20 rounded-xl p-6 flex items-start gap-4 shadow-sm border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">security</span>
+<div>
+<h2 class="font-bold text-on-tertiary-container mb-1">Sizning shaxsingiz yashirin</h2>
+<p class="text-sm text-on-tertiary-container/80 leading-relaxed">Ushbu platformada barcha ishtirokchilar anonim. Sizning ma'lumotlaringiz xavfsiz va hech kimga ko'rinmaydi.</p>
+</div>
+</section>
+<!-- Search Section -->
+<section class="relative">
+<div class="flex items-center bg-surface-container-highest rounded-full px-6 py-4 group focus-within:ring-2 ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface-variant placeholder:text-on-surface-variant/50" placeholder="Mavzularni qidirish: 'Uyda yordam' yoki 'Ruhiy salomatlik'" type="text"/>
+</div>
+</section>
+<!-- Threaded Discussion 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-sm space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-fuchsia-100 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="abstract organic floral pattern in soft teal and pink pastel colors for anonymous user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBACwebWNbBflY2yVkCFEsMC3PEuIi7EmC40S5OkeDOdYdP2Gl-l63HeJ6PzdPnGh5ZKpSgsFqEwcD8xDQ-3yMBn2PKyuPX3_Dtl0pDKpn4DDdpTKl0oXqcDoDL1_UURY67_4WS7TnYBWaJtoP4a_uHuah7EkfNpAp2hRxE6ndKAsJVCC7lODdfMDRKyybNADrZ7POu1f4b3D-xAMX6ookc_Bbc7L7fUv95ULNWGxos26wDsJxenKxufVqV1RM3g1heNRewVE7YTg"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm text-primary">Anonim_Lola</span>
+<span class="text-[10px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface-variant uppercase tracking-widest">Hozirgina</span>
+</div>
+<p class="text-xs text-on-surface-variant">Mavzu: Uyda yordam</p>
+</div>
+</div>
+<p class="text-on-surface leading-relaxed">Assalomu alaykum. Bugun biroz charchadim, lekin bu yerda yozish imkoni borligidan xursandman. Ish va oilani birga olib borishga qiynalayotganlar bormi? Maslahat bering.</p>
+<div class="flex items-center gap-4 pt-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/30 text-on-secondary-container hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-xs font-semibold">12</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-container/30 text-on-tertiary-container hover:bg-tertiary-container/50 transition-colors">
+<span class="material-symbols-outlined text-lg">psychology_alt</span>
+<span class="text-xs font-semibold">Quchoqlash</span>
+</button>
+<button class="ml-auto text-primary text-xs font-bold px-4 py-2 hover:bg-primary/5 rounded-full">4 Javob</button>
+</div>
+</article>
+<!-- Nested Reply Thread -->
+<div class="ml-8 space-y-4 border-l-2 border-surface-container-high pl-6">
+<article class="bg-surface-container-low/50 rounded-lg p-5 space-y-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-fuchsia-50">
+<img class="w-full h-full object-cover" data-alt="vibrant abstract shape with soft edges resembling a blooming flower in mint and deep teal colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnIzkD1bMA06Lp3xOmf9BgqKrK2hXh3AAnzgqEd26ENSFLotTya5xghY5SY5T2ohvCJxDK4ChPnpMrEsbx4ND_j0yEUx6yH8sn6HlnR4yiBci_CeMnT87kKNm-QPoKjqqhaaQP90YUQVmEK_Upo2wragyAo-pZf_Gmfhl_7q7vkoP02CTPYdCzTVDM3Ughs7RocQ3sLUUE06z3pAqxgXhRcrQVhPlOcdFCkxXmYyYWUgPKGRjazejDcXkEDQFFaDn1vn4O95QiWQ"/>
+</div>
+<span class="font-bold text-xs text-on-surface-variant">Anonim_Jasur</span>
+<span class="text-[10px] text-outline">15 daqiqa oldin</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-snug">Men ham xuddi shunday holatdaman. O'zingizga vaqt ajratishni unutmang, kichik tanaffuslar ham katta yordam beradi. Biz siz bilanmiz!</p>
+</article>
+</div>
+<!-- Threaded Discussion 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-sm space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-fuchsia-100 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="soothing abstract wave pattern in deep teal and mint green with grainy film texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8ccbmTMat3N93yMK0GmSZjxVu2pxQOmAR7n05mIWhVMMRQAdqkvPLfxA2lDX0E_3yXltVgFjyZT4LkgxgQdU9DH1Xi3fSwlwlTtE83ESuffr58VBOkLUFHbzIltspf0B6USfuZH-_cdUSfMgFuzpDx_lSdA6MOMmO7xi_KAoMvuBhVRlC0300VGp5yx-d9WPik7IugjsQ7R45DEvNVSsUBSQZEOiEm5czvjlEL9EkamL0EsdIP_-5HAVWTLnFdmqZd0cxgNq5nA"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-sm text-primary">Yordamchi_Niyoz</span>
+<span class="text-[10px] bg-surface-container px-2 py-0.5 rounded-full text-on-surface-variant uppercase tracking-widest">2 soat oldin</span>
+</div>
+<p class="text-xs text-on-surface-variant">Mavzu: Ruhiy salomatlik</p>
+</div>
+</div>
+<div class="rounded-lg overflow-hidden my-2">
+<img class="w-full h-48 object-cover" data-alt="calm forest morning with soft light rays filtering through green leaves and gentle fog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIhb6BEsz5XiTq7jgGy3jfGjPZ81oGur4eWCaRIujRuOYSeGQzuxstOwkn4ouD5K-pSxMQieEGKYcap7NPzOVBeG2AX5-NM0XIjFY9GHWG1Ic6BiwdG8qRxNHG4_v0P7W6PvSE0XxTpZSDT5xAKzzwKbIB9zMVRS0PjWmi51_Sdy1r8GAXSXKusFVGrCTB8h5qyoUgiMCrF9eSgrHBCpia49Y23sc6QEYA075qw1DfviSb2ZuEQSZlctJ6EKBbWGKOAaKQOSLomQ"/>
+</div>
+<p class="text-on-surface leading-relaxed">Ba'zida shunchaki nafas olish va tabiatni his qilish kifoya. Ruhiy xotirjamlikni qanday topasizlar?</p>
+<div class="flex items-center gap-4 pt-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/30 text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-xs font-semibold">28</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-container/30 text-on-tertiary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<span class="text-xs font-semibold">Qo'llab-quvvatlash</span>
+</button>
+<button class="ml-auto text-primary text-xs font-bold px-4 py-2 hover:bg-primary/5 rounded-full">12 Javob</button>
+</div>
+</article>
+</main>
+<!-- Floating Safety Exit (The Sanctuary Core) -->
+<button class="fixed right-6 bottom-28 w-14 h-14 signature-gradient text-white rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-105 active:scale-95 transition-transform duration-300">
+<span class="material-symbols-outlined">emergency_home</span>
+</button>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-fuchsia-200/70 dark:bg-fuchsia-900/40 backdrop-blur-2xl rounded-t-[3rem] shadow-[0_-8px_32px_rgba(116,84,117,0.08)] z-50">
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Asosiy</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-fuchsia-700 to-fuchsia-400 text-white rounded-full p-3 shadow-lg hover:opacity-80 transition-opacity active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Hamjamiyat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Ta'lim</span>
+</a>
+<a class="flex flex-col items-center justify-center text-fuchsia-800/60 dark:text-fuchsia-200/60 p-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-plus-jakarta-sans text-[11px] font-semibold">Profil</span>
+</a>
+</nav>
+</body></html>
